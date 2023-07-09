@@ -10,3 +10,18 @@
 - [react spinners](https://www.davidhu.io/react-spinners/)
 - [timeago](https://github.com/hustcc/timeago.js)
 - [react-multi-carousel](https://github.com/YIZHUANG/react-multi-carousel)
+
+### 환경변수
+
+.evn.local
+
+```
+GOOGLE_OAUTH_ID=
+GOOGLE_OAUTH_SECRET=
+```
+
+- [google](https://console.cloud.google.com/apis/credentials?hl=ko&project=next-instagram-392304)
+
+### 참고 사이트
+
+- [string password generator](https://www.strongpasswordgenerator.org/)
