@@ -16,13 +16,13 @@ export default function SideBar({ user }: Props) {
           <p className="text-bold">{username}</p>
           <p className="text-lg leading-4 text-neutral-500">{name}</p>
         </div>
-        <p className="mt-8 text-sm text-neutral-500">
-          About﹒Help﹒Press﹒API﹒Jobs﹒Privacy﹒Terms﹒Location﹒Language
-        </p>
-        <p className="mt-8 text-sm font-bold text-neutral-500">
-          @Copyright INSTAGRAM from silqwer
-        </p>
       </div>
+      <p className="mt-8 text-sm text-neutral-500">
+        About﹒Help﹒Press﹒API﹒Jobs﹒Privacy﹒Terms﹒Location﹒Language
+      </p>
+      <p className="mt-8 text-sm font-bold text-neutral-500">
+        @Copyright INSTAGRAM from silqwer
+      </p>
     </>
   );
 }
