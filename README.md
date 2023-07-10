@@ -10,6 +10,7 @@
 - [react spinners](https://www.davidhu.io/react-spinners/)
 - [timeago](https://github.com/hustcc/timeago.js)
 - [react-multi-carousel](https://github.com/YIZHUANG/react-multi-carousel)
+- [swr](https://swr.vercel.app/ko)
 
 ### 환경변수
 
