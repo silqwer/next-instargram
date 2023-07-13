@@ -13,4 +13,4 @@ export const client = createClient({
 const builder = imageUrlBuilder(client);
 
 export const urlFor = (source: SanityImageSource) =>
-  builder.image(source).width(800).url;
+  builder.image(source).width(800).url();
