@@ -9,11 +9,19 @@ export default function PostList() {
   const { data: posts, isLoading, error } = useSWR<SimplePost[]>("/api/posts");
   return (
     <section>
-      {isLoading && <GridLoader color="red" />}
+      {isLoading && (
+        <div className="mt-32 text-center">
+          <GridLoader color="red" />
+        </div>
+      )}
       {posts && (
         <ul>
           {posts &&
-            posts.map((post) => <PostListCard key={post.id} post={post} />)}
+            posts.map((post) => (
+              <li key={post.id} className="mb-4">
+                <PostListCard post={post} />
+              </li>
+            ))}
         </ul>
       )}
     </section>
