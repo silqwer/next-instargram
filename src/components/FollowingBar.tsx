@@ -12,7 +12,7 @@ export default function FollowingBar() {
   const users = data?.following;
 
   return (
-    <section className="flex items-center justify-center w-full p-4 mb-4 rounded-lg shadow-sm shadow-neutral-300 min-h-[90px] overflow-x-auto">
+    <section className="relative flex items-center justify-center w-full p-4 mb-4 rounded-lg shadow-sm shadow-neutral-300 min-h-[90px] overflow-x-auto">
       {error && <p>{`Server network error 😵`}</p>}
       {isLoading ? (
         <PropagateLoader size={8} color="red" />
