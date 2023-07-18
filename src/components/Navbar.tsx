@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
 import HomeIcon from "./ui/icons/HomeIcon";
 import HomeFillIcon from "./ui/icons/HomeFillIcon";
 import SearchIcon from "./ui/icons/SearchIcon";

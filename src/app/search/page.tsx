@@ -1,5 +1,9 @@
-import React from "react";
+import UserSearch from "@/components/UserSearch";
 
 export default function SearchPage() {
-  return <div>SearchPage</div>;
+  return (
+    <div>
+      <UserSearch></UserSearch>
+    </div>
+  );
 }
