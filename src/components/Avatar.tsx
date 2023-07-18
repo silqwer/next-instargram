@@ -1,6 +1,3 @@
-import Image from "next/image";
-import React from "react";
-
 type AvatarSize = "small" | "medium" | "large";
 
 type Props = {
