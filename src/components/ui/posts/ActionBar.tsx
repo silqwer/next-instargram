@@ -25,7 +25,7 @@ export default function ActionBar({ post }: Props) {
   const { setLike } = usePosts();
   const handleLike = (like: boolean) => {
     if (user) {
-      setLike(post, username, like);
+      setLike(post, user.username, like);
     }
   };
 
