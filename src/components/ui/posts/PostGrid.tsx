@@ -17,7 +17,7 @@ export default function PostGrid({ username, query }: Props) {
   return (
     <div className="w-full text-center ">
       {isLoading && <GridLoader />}
-      <ul className="grid grid-cols-3 gap-4 px-8 py-4">
+      <ul className="grid gap-4 px-8 py-4 md:grid-cols-3 sm:grid-cols-1">
         {posts &&
           posts.map((post, index) => (
             <li key={post.id}>
