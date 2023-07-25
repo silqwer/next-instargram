@@ -99,6 +99,7 @@ export async function removeBookmark(userId: string, postId: string) {
 }
 
 export async function follow(myId: string, targetId: string) {
+  console.log("follow:", myId, targetId);
   return client
     .transaction()
     .patch(myId, (user) =>
@@ -115,9 +116,10 @@ export async function follow(myId: string, targetId: string) {
 }
 
 export async function unfollow(myId: string, targetId: string) {
+  console.log("unfollow:", myId, targetId);
   return client
     .transaction()
-    .patch(myId, (user) => user.unset([`following[_ref==${targetId}]`]))
-    .patch(targetId, (user) => user.unset([`followers[_ref==${myId}]`]))
+    .patch(myId, (user) => user.unset([`following[_ref=="${targetId}"]`]))
+    .patch(targetId, (user) => user.unset([`followers[_ref=="${myId}"]`]))
     .commit({ autoGenerateArrayKeys: true });
 }
