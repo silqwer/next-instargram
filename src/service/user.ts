@@ -25,8 +25,9 @@ export async function addUser({ id, username, email, name, image }: OAuthUser) {
 }
 
 export async function getUserByUsername(username: string) {
+  console.log("getUserByUsername:", username);
   return client.fetch(
-    `*[_type == "user" && username == "${username}"][1]{
+    `*[_type == "user" && username == "${username}"][0]{
       ...,
       "id":_id,
       following[]->{username,image},
@@ -96,4 +97,30 @@ export async function removeBookmark(userId: string, postId: string) {
     .patch(userId)
     .unset([`bookmarks[_ref=="${postId}"]`])
     .commit();
+}
+
+export async function follow(myId: string, targetId: string) {
+  console.log("follow:", myId, targetId);
+  return client
+    .transaction()
+    .patch(myId, (user) =>
+      user
+        .setIfMissing({ following: [] })
+        .append("following", [{ _ref: targetId, _type: "reference" }])
+    )
+    .patch(targetId, (user) =>
+      user
+        .setIfMissing({ followers: [] })
+        .append("followers", [{ _ref: myId, _type: "reference" }])
+    )
+    .commit({ autoGenerateArrayKeys: true });
+}
+
+export async function unfollow(myId: string, targetId: string) {
+  console.log("unfollow:", myId, targetId);
+  return client
+    .transaction()
+    .patch(myId, (user) => user.unset([`following[_ref=="${targetId}"]`]))
+    .patch(targetId, (user) => user.unset([`followers[_ref=="${myId}"]`]))
+    .commit({ autoGenerateArrayKeys: true });
 }
