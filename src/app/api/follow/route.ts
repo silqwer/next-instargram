@@ -15,9 +15,8 @@ export async function PUT(request: NextRequest) {
   if (!targetId || isFollow === undefined) {
     return new Response("Bad Request", { status: 400 });
   }
-  console.log("isFollow:", isFollow);
+
   const result = isFollow ? follow : unfollow;
-  console.log(user.id, targetId);
   return result(user.id, targetId)
     .then((response) => NextResponse.json(response))
     .catch((error) => new Response(JSON.stringify(error), { status: 500 }));

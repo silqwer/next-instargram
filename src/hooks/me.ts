@@ -45,7 +45,6 @@ export default function useMe() {
 
   const toggleFollow = useCallback(
     (targetId: string, follow: boolean) => {
-      console.log("follow:", follow);
       return mutate(updateFollow(targetId, follow), { populateCache: false });
     },
     [mutate]
