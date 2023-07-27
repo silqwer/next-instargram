@@ -3,13 +3,10 @@
 import HeartIcon from "../icons/HeartIcon";
 import BookmarkIcon from "../icons/BookmarkIcon";
 import { parseDate } from "@/util/date";
-import { useState } from "react";
 import ToggleButton from "../buttons/ToggleButton";
 import HeartFillIcon from "../icons/HeartFillIcon";
 import BookmarkFillIcon from "../icons/BookmarkFillIcon";
 import { Comment, SimplePost } from "@/model/post";
-import { useSession } from "next-auth/react";
-import { useSWRConfig } from "swr";
 import usePosts from "@/hooks/posts";
 import useMe from "@/hooks/me";
 import CommentForm from "./CommentForm";

@@ -1,7 +1,6 @@
 import UserPosts from "@/components/ui/user/UserPosts";
 import UserProfile from "@/components/ui/user/UserProfile";
 import { getUserForProfile } from "@/service/user";
-import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { cache } from "react";
 

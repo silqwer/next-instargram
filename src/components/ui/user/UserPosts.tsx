@@ -2,11 +2,10 @@
 import BookmarkIcon from "@/components/ui/icons/BookmarkIcon";
 import HeartIcon from "@/components/ui/icons/HeartIcon";
 import PostIcon from "@/components/ui/icons/PostIcon";
-import { SimplePost } from "@/model/post";
 import { ProfileUser } from "@/model/user";
 import { useState } from "react";
-import useSWR from "swr";
 import PostGrid from "../posts/PostGrid";
+import { CacheKeysContext } from "@/context/CacheKeysContext";
 
 type Props = {
   user: ProfileUser;
@@ -38,7 +37,11 @@ export default function UserPosts({ user }: Props) {
           </li>
         ))}
       </ul>
-      <PostGrid username={username} query={query} />
+      <CacheKeysContext.Provider
+        value={{ postsKey: `/api/user/${username}/${query}` }}
+      >
+        <PostGrid />
+      </CacheKeysContext.Provider>
     </section>
   );
 }
