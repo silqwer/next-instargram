@@ -1,4 +1,4 @@
-import { Comment, SimplePost } from "@/model/post";
+import { SimplePost } from "@/model/post";
 import Image from "next/image";
 import PostUserAvatar from "./PostUserAvatar";
 import ActionBar from "./ActionBar";
