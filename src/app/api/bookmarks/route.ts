@@ -1,25 +1,19 @@
-import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
-import { authOptions } from "../auth/[...nextauth]/route";
 import { addBookmark, removeBookmark } from "@/service/user";
+import { withSessionUser } from "@/util/sesstion";
 
 export async function PUT(request: NextRequest) {
-  const session = await getServerSession(authOptions);
-  const user = session?.user;
+  return withSessionUser(async (user) => {
+    const { id, bookmark } = await request.json();
 
-  if (!user) {
-    return new Response("Authentication Error", { status: 401 });
-  }
+    if (!id || bookmark === undefined) {
+      return new Response("Bad Request", { status: 400 });
+    }
 
-  const { id, bookmark } = await request.json();
+    const result = bookmark ? addBookmark : removeBookmark;
 
-  if (!id || bookmark === undefined) {
-    return new Response("Bad Request", { status: 400 });
-  }
-
-  const result = bookmark ? addBookmark : removeBookmark;
-
-  return result(user.id, id)
-    .then((response) => NextResponse.json(response))
-    .catch((error) => new Response(JSON.stringify(error), { status: 500 }));
+    return result(user.id, id)
+      .then((response) => NextResponse.json(response))
+      .catch((error) => new Response(JSON.stringify(error), { status: 500 }));
+  });
 }

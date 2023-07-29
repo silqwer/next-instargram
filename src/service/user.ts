@@ -25,7 +25,6 @@ export async function addUser({ id, username, email, name, image }: OAuthUser) {
 }
 
 export async function getUserByUsername(username: string) {
-  console.log("getUserByUsername:", username);
   return client.fetch(
     `*[_type == "user" && username == "${username}"][0]{
       ...,
@@ -100,7 +99,6 @@ export async function removeBookmark(userId: string, postId: string) {
 }
 
 export async function follow(myId: string, targetId: string) {
-  console.log("follow:", myId, targetId);
   return client
     .transaction()
     .patch(myId, (user) =>
@@ -117,7 +115,6 @@ export async function follow(myId: string, targetId: string) {
 }
 
 export async function unfollow(myId: string, targetId: string) {
-  console.log("unfollow:", myId, targetId);
   return client
     .transaction()
     .patch(myId, (user) => user.unset([`following[_ref=="${targetId}"]`]))
