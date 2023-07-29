@@ -14,3 +14,5 @@ const builder = imageUrlBuilder(client);
 
 export const urlFor = (source: SanityImageSource) =>
   builder.image(source).width(800).url();
+
+export const assetURL = `https://${process.env.SANITY_PROJECT_ID}.api.sanity.io/v2021-03-25/assets/images/${process.env.SANITY_DATASET}`;
