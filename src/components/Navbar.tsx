@@ -17,16 +17,19 @@ const MENU = [
     href: "/",
     icon: <HomeIcon />,
     clickedIcon: <HomeFillIcon />,
+    title: "Home",
   },
   {
     href: "/search",
     icon: <SearchIcon />,
     clickedIcon: <SearchFillIcon />,
+    title: "Search users",
   },
   {
     href: "/new",
     icon: <NewIcon />,
     clickedIcon: <NewFillIcon />,
+    title: "New post",
   },
 ];
 
@@ -42,9 +45,11 @@ export default function Navbar() {
       </Link>
       <nav>
         <ul className="flex items-center gap-4 p-4">
-          {MENU.map(({ href, icon, clickedIcon }) => (
+          {MENU.map(({ href, icon, clickedIcon, title }) => (
             <li key={href}>
-              <Link href={href}>{pathname === href ? clickedIcon : icon}</Link>
+              <Link aria-label={title} href={href}>
+                {pathname === href ? clickedIcon : icon}
+              </Link>
             </li>
           ))}
           {user && (
